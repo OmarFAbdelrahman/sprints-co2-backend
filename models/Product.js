@@ -36,12 +36,14 @@ const ProductSchema = new mongoose.Schema(
       default: 20,
     },
 
-    category: {
-      type: mongoose.Types.ObjectId,
-      ref: "Category",
-      required: [true, "Please provide product category"],
-    },
+    // category: {
+    //   type: mongoose.Types.ObjectId,
+    //   ref: "Category",
+    //   required: [true, "Please provide product category"],
+    // },
   },
 
   { timestamps: true }
 );
+
+module.exports = mongoose.model("Product", ProductSchema);
