@@ -29,6 +29,7 @@ const ProductSchema = new mongoose.Schema(
 
     gallery: {
       type: [String],
+      default: "/images/default-product-image.png",
     },
 
     stock: {
