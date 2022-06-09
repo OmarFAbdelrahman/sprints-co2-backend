@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 
 const connectDB = require("./db/connect");
+const fileUpload = require("express-fileupload");
 
 //routers
 const productRouter = require("./routes/productRoutes");
@@ -13,6 +14,8 @@ const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
 app.use(express.json());
+app.use(express.static("./public"));
+app.use(fileUpload());
 
 app.get("/", (req, res) => {
   res.send("EcommerceAPI");
