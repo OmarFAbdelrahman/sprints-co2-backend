@@ -1,6 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const Product = require("../models/Product");
 const path = require("path");
+const CustomError = require("../errors");
 
 const createProduct = async (req, res) => {
   const product = await Product.create(req.body);
