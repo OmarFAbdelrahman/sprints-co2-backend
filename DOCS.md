@@ -1,64 +1,53 @@
-
 # E-Commerce API
-
-
 
 <!--- If we have only one group/collection, then no need for the "ungrouped" heading -->
 
-
-
 ## Endpoints
 
-* [Categories](#categories)
-    1. [Create Category](#1-create-category)
-        * [Error Response](#i-example-request-error-response)
-        * [Successful Response](#ii-example-request-successful-response)
-        * [Duplicate name value](#iii-example-request-duplicate-name-value)
-    1. [Get Categories](#2-get-categories)
-        * [Successful response](#i-example-request-successful-response)
-    1. [Get Single Category](#3-get-single-category)
-        * [Successful Response](#i-example-request-successful-response-1)
-        * [Wrong ID](#ii-example-request-wrong-id)
-    1. [Update Category](#4-update-category)
-        * [Succsessful Response](#i-example-request-succsessful-response)
-        * [Wrong ID](#ii-example-request-wrong-id-1)
-    1. [Delete Category](#5-delete-category)
-        * [Wrong ID](#i-example-request-wrong-id)
-        * [Successful Response](#ii-example-request-successful-response-1)
-* [Products](#products)
-    1. [Upload Image](#1-upload-image)
-        * [Successful Response](#i-example-request-successful-response-2)
-        * [Uploaded File is not an image](#ii-example-request-uploaded-file-is-not-an-image)
-        * [No File Uploaded Response](#iii-example-request-no-file-uploaded-response)
-    1. [Create Product](#2-create-product)
-        * [Successful Response](#i-example-request-successful-response-3)
-        * [Default Values (Price, Discount, Image, Stock)](#ii-example-request-default-values-price-discount-image-stock)
-        * [Empty Request/ Error Response](#iii-example-request-empty-request-error-response)
-    1. [Get Products](#3-get-products)
-        * [Successful Response](#i-example-request-successful-response-4)
-    1. [Get Single Product](#4-get-single-product)
-        * [Wrong ID](#i-example-request-wrong-id-1)
-        * [Successful Response](#ii-example-request-successful-response-2)
-    1. [Update Product](#5-update-product)
-        * [Wrong ID](#i-example-request-wrong-id-2)
-        * [Successful Response](#ii-example-request-successful-response-3)
-    1. [Delete Product](#6-delete-product)
-        * [Successful Response](#i-example-request-successful-response-5)
-        * [Wrong ID](#ii-example-request-wrong-id-2)
+- [Categories](#categories)
+  1. [Create Category](#1-create-category)
+     - [Error Response](#i-example-request-error-response)
+     - [Successful Response](#ii-example-request-successful-response)
+     - [Duplicate name value](#iii-example-request-duplicate-name-value)
+  1. [Get Categories](#2-get-categories)
+     - [Successful response](#i-example-request-successful-response)
+  1. [Get Single Category](#3-get-single-category)
+     - [Successful Response](#i-example-request-successful-response-1)
+     - [Wrong ID](#ii-example-request-wrong-id)
+  1. [Update Category](#4-update-category)
+     - [Succsessful Response](#i-example-request-succsessful-response)
+     - [Wrong ID](#ii-example-request-wrong-id-1)
+  1. [Delete Category](#5-delete-category)
+     - [Wrong ID](#i-example-request-wrong-id)
+     - [Successful Response](#ii-example-request-successful-response-1)
+- [Products](#products)
+  1. [Upload Image](#1-upload-image)
+     - [Successful Response](#i-example-request-successful-response-2)
+     - [Uploaded File is not an image](#ii-example-request-uploaded-file-is-not-an-image)
+     - [No File Uploaded Response](#iii-example-request-no-file-uploaded-response)
+  1. [Create Product](#2-create-product)
+     - [Successful Response](#i-example-request-successful-response-3)
+     - [Default Values (Price, Discount, Image, Stock)](#ii-example-request-default-values-price-discount-image-stock)
+     - [Empty Request/ Error Response](#iii-example-request-empty-request-error-response)
+  1. [Get Products](#3-get-products)
+     - [Successful Response](#i-example-request-successful-response-4)
+  1. [Get Single Product](#4-get-single-product)
+     - [Wrong ID](#i-example-request-wrong-id-1)
+     - [Successful Response](#ii-example-request-successful-response-2)
+  1. [Update Product](#5-update-product)
+     - [Wrong ID](#i-example-request-wrong-id-2)
+     - [Successful Response](#ii-example-request-successful-response-3)
+  1. [Delete Product](#6-delete-product)
+     - [Successful Response](#i-example-request-successful-response-5)
+     - [Wrong ID](#ii-example-request-wrong-id-2)
 
---------
-
-
+---
 
 ## Categories
 
-
-
 ### 1. Create Category
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: POST
@@ -66,55 +55,50 @@ Type: RAW
 URL: http://localhost:5000/api/v1/categories
 ```
 
+**_Body:_**
 
-
-***Body:***
-
-```js        
+```js
 {
     "name": "Others"
 }
 
 ```
 
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Error Response
 
+**_Body:_**
 
+```js
+{
+}
+```
 
 #### I. Example Response: Error Response
+
 ```js
 {
     "msg": "Please provide category name"
 }
 ```
 
-
-***Status Code:*** 400
+**_Status Code:_** 400
 
 <br>
 
-
-
 #### II. Example Request: Successful Response
 
+**_Body:_**
 
-
-***Body:***
-
-```js        
+```js
 {
     "name":"Mobiles"
 }
 ```
 
-
-
 #### II. Example Response: Successful Response
+
 ```js
 {
     "category": {
@@ -127,68 +111,51 @@ URL: http://localhost:5000/api/v1/categories
 }
 ```
 
-
-***Status Code:*** 201
+**_Status Code:_** 201
 
 <br>
 
-
-
 #### III. Example Request: Duplicate name value
 
+**_Body:_**
 
-
-***Body:***
-
-```js        
+```js
 {
     "name": "Mobiles"
 }
 
 ```
 
-
-
 #### III. Example Response: Duplicate name value
+
 ```js
 {
     "msg": "Duplicate value entered for name field, please choose another value"
 }
 ```
 
-
-***Status Code:*** 400
+**_Status Code:_** 400
 
 <br>
 
-
-
 ### 2. Get Categories
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: GET
-Type: 
+Type:
 URL: http://localhost:5000/api/v1/categories
 ```
 
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Successful response
 
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### I. Example Response: Successful response
+
 ```js
 {
     "categories": [
@@ -211,55 +178,40 @@ URL: http://localhost:5000/api/v1/categories
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 ### 3. Get Single Category
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: GET
-Type: 
+Type:
 URL: http://localhost:5000/api/v1/categories/:id
 ```
 
+**_URL variables:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a28bab5f4b07296885c78a |             |
 
-***URL variables:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a28bab5f4b07296885c78a |  |
-
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Successful Response
 
+**_Query:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a32dad0e8281e47780986f |             |
 
-***Query:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a32dad0e8281e47780986f |  |
-
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### I. Example Response: Successful Response
+
 ```js
 {
     "category": {
@@ -272,48 +224,35 @@ URL: http://localhost:5000/api/v1/categories/:id
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 #### II. Example Request: Wrong ID
 
-
-
-***Query:***
+**_Query:_**
 
 | Key | Value | Description |
-| --- | ------|-------------|
-| id | 1 |  |
+| --- | ----- | ----------- |
+| id  | 1     |             |
 
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### II. Example Response: Wrong ID
+
 ```js
 {
     "msg": "No item found with id : 1"
 }
 ```
 
-
-***Status Code:*** 404
+**_Status Code:_** 404
 
 <br>
 
-
-
 ### 4. Update Category
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: PATCH
@@ -321,52 +260,40 @@ Type: RAW
 URL: http://localhost:5000/api/v1/categories/:id
 ```
 
+**_URL variables:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a28bab5f4b07296885c78a |             |
 
-***URL variables:***
+**_Body:_**
 
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a28bab5f4b07296885c78a |  |
-
-
-
-***Body:***
-
-```js        
+```js
 {
     "name":"Mobile Phones"
 }
 ```
 
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Succsessful Response
 
+**_Query:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a32dad0e8281e47780986f |             |
 
-***Query:***
+**_Body:_**
 
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a32dad0e8281e47780986f |  |
-
-
-
-***Body:***
-
-```js        
+```js
 {
     "name":"Mobile Phones"
 }
 ```
 
-
-
 #### I. Example Response: Succsessful Response
+
 ```js
 {
     "category": {
@@ -379,143 +306,105 @@ URL: http://localhost:5000/api/v1/categories/:id
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 #### II. Example Request: Wrong ID
 
-
-
-***Query:***
+**_Query:_**
 
 | Key | Value | Description |
-| --- | ------|-------------|
-| id | 1 |  |
+| --- | ----- | ----------- |
+| id  | 1     |             |
 
+**_Body:_**
 
-
-***Body:***
-
-```js        
+```js
 {
     "name":"Mobile Phones"
 }
 ```
 
-
-
 #### II. Example Response: Wrong ID
+
 ```js
 {
     "msg": "No item found with id : 1"
 }
 ```
 
-
-***Status Code:*** 404
+**_Status Code:_** 404
 
 <br>
-
-
 
 ### 5. Delete Category
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: DELETE
-Type: 
+Type:
 URL: http://localhost:5000/api/v1/categories/:id
 ```
 
+**_URL variables:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a28bab5f4b07296885c78a |             |
 
-***URL variables:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a28bab5f4b07296885c78a |  |
-
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Wrong ID
 
-
-
-***Query:***
+**_Query:_**
 
 | Key | Value | Description |
-| --- | ------|-------------|
-| id | 1 |  |
+| --- | ----- | ----------- |
+| id  | 1     |             |
 
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### I. Example Response: Wrong ID
+
 ```js
 {
     "msg": "No item found with id : 1"
 }
 ```
 
-
-***Status Code:*** 404
+**_Status Code:_** 404
 
 <br>
 
-
-
 #### II. Example Request: Successful Response
 
+**_Query:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a32dad0e8281e47780986f |             |
 
-***Query:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a32dad0e8281e47780986f |  |
-
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### II. Example Response: Successful Response
+
 ```js
 {
     "msg": "Category is deleted"
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 ## Products
-
-
 
 ### 1. Upload Image
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: POST
@@ -523,94 +412,71 @@ Type: FORMDATA
 URL: http://localhost:5000/api/v1/products/uploadImage
 ```
 
+**_Body:_**
 
+| Key   | Value | Description |
+| ----- | ----- | ----------- |
+| image |       |             |
 
-***Body:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| image |  |  |
-
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Successful Response
 
+**_Body:_**
 
-
-***Body:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| image |  |  |
-
-
+| Key   | Value | Description |
+| ----- | ----- | ----------- |
+| image |       |             |
 
 #### I. Example Response: Successful Response
+
 ```js
 {
     "image": "/images/iphone-13-pro-family-hero.png"
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 #### II. Example Request: Uploaded File is not an image
 
+**_Body:_**
 
-
-***Body:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| image |  |  |
-
-
+| Key   | Value | Description |
+| ----- | ----- | ----------- |
+| image |       |             |
 
 #### II. Example Response: Uploaded File is not an image
+
 ```js
 {
     "msg": "Please upload an image"
 }
 ```
 
-
-***Status Code:*** 400
+**_Status Code:_** 400
 
 <br>
 
-
-
 #### III. Example Request: No File Uploaded Response
 
-
-
 #### III. Example Response: No File Uploaded Response
+
 ```js
 {
     "msg": "No file uploaded"
 }
 ```
 
-
-***Status Code:*** 400
+**_Status Code:_** 400
 
 <br>
 
-
-
 ### 2. Create Product
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: POST
@@ -618,11 +484,9 @@ Type: RAW
 URL: http://localhost:5000/api/v1/products
 ```
 
+**_Body:_**
 
-
-***Body:***
-
-```js        
+```js
     {
         "name": "Samsung S22",
         "description": "Lorem Ipsum is Lorem Ipsum but it is Lorem Ipsum",
@@ -630,18 +494,13 @@ URL: http://localhost:5000/api/v1/products
     }
 ```
 
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Successful Response
 
+**_Body:_**
 
-
-***Body:***
-
-```js        
+```js
     {
         "name": "Iphone",
         "description": "Lorem Ipsum is Lorem Ipsum but it is Lorem Ipsum",
@@ -655,9 +514,8 @@ URL: http://localhost:5000/api/v1/products
     }
 ```
 
-
-
 #### I. Example Response: Successful Response
+
 ```js
 {
     "product": {
@@ -678,20 +536,15 @@ URL: http://localhost:5000/api/v1/products
 }
 ```
 
-
-***Status Code:*** 201
+**_Status Code:_** 201
 
 <br>
 
-
-
 #### II. Example Request: Default Values (Price, Discount, Image, Stock)
 
+**_Body:_**
 
-
-***Body:***
-
-```js        
+```js
     {
         "name": "Samsung S22",
         "description": "Lorem Ipsum is Lorem Ipsum but it is Lorem Ipsum",
@@ -699,9 +552,8 @@ URL: http://localhost:5000/api/v1/products
     }
 ```
 
-
-
 #### II. Example Response: Default Values (Price, Discount, Image, Stock)
+
 ```js
 {
     "product": {
@@ -722,57 +574,49 @@ URL: http://localhost:5000/api/v1/products
 }
 ```
 
-
-***Status Code:*** 201
+**_Status Code:_** 201
 
 <br>
 
-
-
 #### III. Example Request: Empty Request/ Error Response
 
+**_Body:_**
 
+```js
+{
+}
+```
 
 #### III. Example Response: Empty Request/ Error Response
+
 ```js
 {
     "msg": "Please provide product category,Please provide description,Please provide product name"
 }
 ```
 
-
-***Status Code:*** 400
+**_Status Code:_** 400
 
 <br>
 
-
-
 ### 3. Get Products
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: GET
-Type: 
+Type:
 URL: http://localhost:5000/api/v1/products
 ```
 
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Successful Response
 
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### I. Example Response: Successful Response
+
 ```js
 {
     "products": [
@@ -811,85 +655,62 @@ URL: http://localhost:5000/api/v1/products
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 ### 4. Get Single Product
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: GET
-Type: 
+Type:
 URL: http://localhost:5000/api/v1/products/:id
 ```
 
+**_URL variables:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a3368efa70c8308b318111 |             |
 
-***URL variables:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a3368efa70c8308b318111 |  |
-
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Wrong ID
 
-
-
-***Query:***
+**_Query:_**
 
 | Key | Value | Description |
-| --- | ------|-------------|
-| id | 1 |  |
+| --- | ----- | ----------- |
+| id  | 1     |             |
 
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### I. Example Response: Wrong ID
+
 ```js
 {
     "msg": "No item found with id : 1"
 }
 ```
 
-
-***Status Code:*** 404
+**_Status Code:_** 404
 
 <br>
 
-
-
 #### II. Example Request: Successful Response
 
+**_Query:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a335b9fa70c8308b31810d |             |
 
-***Query:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a335b9fa70c8308b31810d |  |
-
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### II. Example Response: Successful Response
+
 ```js
 {
     "product": {
@@ -910,18 +731,13 @@ URL: http://localhost:5000/api/v1/products/:id
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 ### 5. Update Product
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: PATCH
@@ -929,88 +745,68 @@ Type: RAW
 URL: http://localhost:5000/api/v1/products/:id
 ```
 
+**_URL variables:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a3368efa70c8308b318111 |             |
 
-***URL variables:***
+**_Body:_**
 
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a3368efa70c8308b318111 |  |
-
-
-
-***Body:***
-
-```js        
+```js
 {
-    "price": 14000 
+    "price": 14000
 }
 ```
 
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Wrong ID
 
-
-
-***Query:***
+**_Query:_**
 
 | Key | Value | Description |
-| --- | ------|-------------|
-| id | 1 |  |
+| --- | ----- | ----------- |
+| id  | 1     |             |
 
+**_Body:_**
 
-
-***Body:***
-
-```js        
+```js
 {
-    "price": 14000 
+    "price": 14000
 }
 ```
 
-
-
 #### I. Example Response: Wrong ID
+
 ```js
 {
     "msg": "No item found with id : 1"
 }
 ```
 
-
-***Status Code:*** 404
+**_Status Code:_** 404
 
 <br>
 
-
-
 #### II. Example Request: Successful Response
 
+**_Query:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a335b9fa70c8308b31810d |             |
 
-***Query:***
+**_Body:_**
 
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a335b9fa70c8308b31810d |  |
-
-
-
-***Body:***
-
-```js        
+```js
 {
-    "price": 14000 
+    "price": 14000
 }
 ```
 
-
-
 #### II. Example Response: Successful Response
+
 ```js
 {
     "product": {
@@ -1031,99 +827,74 @@ URL: http://localhost:5000/api/v1/products/:id
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 ### 6. Delete Product
 
-
-
-***Endpoint:***
+**_Endpoint:_**
 
 ```bash
 Method: DELETE
-Type: 
+Type:
 URL: http://localhost:5000/api/v1/products/:id
 ```
 
+**_URL variables:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a3368efa70c8308b318111 |             |
 
-***URL variables:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a3368efa70c8308b318111 |  |
-
-
-
-***More example Requests/Responses:***
-
+**_More example Requests/Responses:_**
 
 #### I. Example Request: Successful Response
 
+**_Query:_**
 
+| Key | Value                    | Description |
+| --- | ------------------------ | ----------- |
+| id  | 62a335b9fa70c8308b31810d |             |
 
-***Query:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| id | 62a335b9fa70c8308b31810d |  |
-
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### I. Example Response: Successful Response
+
 ```js
 {
     "msg": "Product removed"
 }
 ```
 
-
-***Status Code:*** 200
+**_Status Code:_** 200
 
 <br>
 
-
-
 #### II. Example Request: Wrong ID
 
-
-
-***Query:***
+**_Query:_**
 
 | Key | Value | Description |
-| --- | ------|-------------|
-| id | 1 |  |
+| --- | ----- | ----------- |
+| id  | 1     |             |
 
-
-
-***Body: None***
-
-
+**_Body: None_**
 
 #### II. Example Response: Wrong ID
+
 ```js
 {
     "msg": "No item found with id : 1"
 }
 ```
 
-
-***Status Code:*** 404
+**_Status Code:_** 404
 
 <br>
 
-
-
 ---
+
 [Back to top](#e-commerce-api)
 
->Generated at 2022-06-10 14:44:49 by [docgen](https://github.com/thedevsaddam/docgen)
+> Generated at 2022-06-10 14:54:58 by [docgen](https://github.com/thedevsaddam/docgen)

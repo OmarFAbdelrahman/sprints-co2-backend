@@ -21,10 +21,6 @@ app.use(express.json());
 app.use(express.static("./public"));
 app.use(fileUpload());
 
-app.get("/", (req, res) => {
-  res.send("EcommerceAPI");
-});
-
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/categories", categoryRouter);
 
