@@ -1,0 +1,30 @@
+[
+    {
+      "name": "Chair",
+      "price": 25999,
+      "gallery": [
+        "https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160"
+      ],
+      "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge"
+      
+    },
+    {
+        "name": "Iphone",
+        "price": 25999,
+        "gallery": [
+          "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=940&hei=1112&fmt=png-alpha&.v=1645552346280"
+        ],
+        "description": "Lorem Ipsum is Lorem Ipsum but it is Lorem Ipsum "
+    },
+    {
+        "name": "Jeans",
+        "price": 25999,
+        "gallery": [
+          "https://static.independent.co.uk/2021/12/07/10/Weeklash.png"
+        ],
+        "description": "BLue Jeans",
+        "stock": 50
+    }
+
+  ]
+  
