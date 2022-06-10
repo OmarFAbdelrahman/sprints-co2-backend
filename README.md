@@ -8,11 +8,11 @@ npm install
 
 ## DB Access
 
-You need to add Atlas Mongo connection URL as a variable with the name MONGO_URL in a .env file.
+You need to add Atlas Mongo connection URL as a variable with the name MONGO_URL in .env file.
 
 ## Usage
 
-Server will run on port 5000 by default. Define a variable called PORT in .env file with the desired port.
+Server will run on port 5000 by default. Define a variable with the name PORT in .env file with the desired port.
 
 ```bash
 node app.js
