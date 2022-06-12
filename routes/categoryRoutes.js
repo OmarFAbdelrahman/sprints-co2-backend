@@ -8,13 +8,19 @@ const {
   updateCategory,
   deleteCategory,
 } = require("../controllers/categoryController");
-const { authorizePermissions } = require("../middleware/authentication");
+const {
+  authorizePermissions,
+  requireAuth,
+} = require("../middleware/authentication");
 
-router.route("/").get(getCategories).post(authorizePermissions(true),createCategory);
+router
+  .route("/")
+  .get(getCategories)
+  .post([requireAuth, authorizePermissions(true)], createCategory);
 router
   .route("/:id")
   .get(getSingleCategory)
-  .patch(authorizePermissions(true),updateCategory)
-  .delete(authorizePermissions(true),deleteCategory);
+  .patch([requireAuth, authorizePermissions(true)], updateCategory)
+  .delete([requireAuth, authorizePermissions(true)], deleteCategory);
 
 module.exports = router;

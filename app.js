@@ -7,7 +7,6 @@ const app = express();
 
 //DB
 const connectDB = require("./db/connect");
-
 const fileUpload = require("express-fileupload");
 
 //routers
@@ -15,19 +14,17 @@ const productRouter = require("./routes/productRoutes");
 const categoryRouter = require("./routes/categoryRoutes");
 const authRouter = require("./routes/authRoutes");
 
-
 //middleware
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
-const { requireAuth } = require("./middleware/authentication");
 
 app.use(express.json());
 app.use(express.static("./public"));
 app.use(fileUpload());
 app.use(cookieParser());
 
-app.use("/api/v1/products",[requireAuth],productRouter);
-app.use("/api/v1/categories", [requireAuth],categoryRouter);
+app.use("/api/v1/products", productRouter);
+app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.use(notFoundMiddleware);
