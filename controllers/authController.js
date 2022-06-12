@@ -4,18 +4,19 @@ const jwt = require("jsonwebtoken");
 const CustomError = require("../errors");
 
 
-const createToken = (id) => {
-
-    const token = jwt.sign({ id }, process.env.JWT_SECRET || "CO2-eCommerce-Project", {
+const createToken = (id , role) => {
+    // console.log(id , role) ;
+    const token = jwt.sign({ "id" : id , "role": role }, process.env.JWT_SECRET || "CO2-eCommerce-Project", {
         expiresIn:  60 * 60 * 24 * 3
     })
     return token;
 }
 
 const signup = async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const user = await User.create(req.body);
-    const token = createToken(user._id);
+    console.log(user);
+    const token = createToken(user._id , user.role);
     res.cookie("jwt", token, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 3});
     res.status(StatusCodes.CREATED).json({ user : user._id });
   };
@@ -24,8 +25,8 @@ const signup = async (req, res) => {
 
     const { email, password } = req.body;
     const user = await User.login(email, password);
-    const token = createToken(user._id);
-    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+    const token = createToken(user._id , user.role);
+    res.cookie('jwt', token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 3 * 1000 });
     res.status(StatusCodes.OK).json({ user: user._id });
   
   };

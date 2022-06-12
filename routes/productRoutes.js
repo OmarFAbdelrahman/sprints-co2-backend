@@ -8,14 +8,16 @@ const {
   deleteProduct,
   uploadImage,
 } = require("../controllers/productController");
-router.route("/").get( getProducts).post(createProduct);
 
-router.route("/uploadImage").post(uploadImage);
+const { authorizePermissions } = require("../middleware/authentication");
+router.route("/").get( getProducts).post(authorizePermissions(true),createProduct);
+
+router.route("/uploadImage").post(authorizePermissions(true),uploadImage);
 
 router
   .route("/:id")
   .get(getSingleProduct)
-  .patch(updateProduct)
-  .delete(deleteProduct);
+  .patch(authorizePermissions(true),updateProduct)
+  .delete(authorizePermissions(true),deleteProduct);
 
 module.exports = router;
