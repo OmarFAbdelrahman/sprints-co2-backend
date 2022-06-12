@@ -12,7 +12,7 @@ const fileUpload = require("express-fileupload");
 //routers
 const productRouter = require("./routes/productRoutes");
 const categoryRouter = require("./routes/categoryRoutes");
-
+const orderRouter = require("./routes/orderRoutes");
 //middleware
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
@@ -23,6 +23,7 @@ app.use(fileUpload());
 
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/categories", categoryRouter);
+app.use("/api/v1/orders", orderRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
