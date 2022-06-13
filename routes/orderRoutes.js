@@ -5,7 +5,7 @@ const {
   getAllOrders,
   getSingleOrder,
   getCurrentOrders,
-  UpdateOrder,
+  UpdateOrderStatus,
 } = require("../controllers/orderController");
 const {
   authorizePermissions,
@@ -19,7 +19,7 @@ router
 router
   .route("/:id")
   .get(requireAuth, getSingleOrder)
-  .patch(requireAuth, UpdateOrder);
+  .patch([requireAuth, authorizePermissions(true)], UpdateOrderStatus);
 router.route("/showMyOrders").get(requireAuth, getCurrentOrders);
 
 module.exports = router;

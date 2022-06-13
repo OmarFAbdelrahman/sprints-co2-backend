@@ -6,6 +6,9 @@ const OrderItemSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  gallery: {
+    type: [String],
+  },
   price: {
     type: Number,
     required: true,
@@ -41,6 +44,15 @@ const OrderSchema = mongoose.Schema(
       ],
       default: "Pending",
     },
+    paymentMethod: {
+      type: String,
+      required: [true, "Please provide the payment method"],
+      enum: ["Cash", "Card"],
+    },
+    // card: {
+    //   type: mongoose.Schema.ObjectId,
+    //   ref: "Card",
+    // },
     user: { type: mongoose.Schema.ObjectId, ref: "User", required: true },
   },
   { timestamps: true }
