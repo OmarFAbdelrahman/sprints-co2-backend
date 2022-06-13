@@ -9,14 +9,24 @@ const {
   uploadImage,
 } = require("../controllers/productController");
 
-router.route("/").get(getProducts).post(createProduct);
+const {
+  authorizePermissions,
+  requireAuth,
+} = require("../middleware/authentication");
 
-router.route("/uploadImage").post(uploadImage);
+router
+  .route("/")
+  .get(getProducts)
+  .post([requireAuth, authorizePermissions(true)], createProduct);
+
+router
+  .route("/uploadImage")
+  .post([requireAuth, authorizePermissions(true)], uploadImage);
 
 router
   .route("/:id")
   .get(getSingleProduct)
-  .patch(updateProduct)
-  .delete(deleteProduct);
+  .patch([requireAuth, authorizePermissions(true)], updateProduct)
+  .delete([requireAuth, authorizePermissions(true)], deleteProduct);
 
 module.exports = router;
