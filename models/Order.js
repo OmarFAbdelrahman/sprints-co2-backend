@@ -45,8 +45,5 @@ const OrderSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-<<<<<<< HEAD
-=======
 
 module.exports = mongoose.model("Order", OrderSchema);
->>>>>>> authv2
