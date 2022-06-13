@@ -13,6 +13,10 @@ const OrderItemSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  name: {
+    type: String,
+    required: true,
+  },
 });
 
 const OrderSchema = mongoose.Schema(

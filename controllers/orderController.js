@@ -13,7 +13,10 @@ const createOrder = async (req, res) => {
   if (!shippingFee) {
     throw new CustomError.BadRequestError("Please provide shipping fee");
   }
-  if (!paymentMethod || paymentMethod !== "Card" || paymentMethod !== "Cash") {
+  if (
+    !paymentMethod ||
+    (paymentMethod !== "Card" && paymentMethod !== "Cash")
+  ) {
     throw new CustomError.BadRequestError(
       "Please provide valid payment method"
     );
@@ -39,7 +42,8 @@ const createOrder = async (req, res) => {
       );
     }
 
-    const { name, price: originalPrice, gallery, discount, _id } = dbProduct;
+    const { name, price, gallery, discount, _id } = product;
+    const originalPrice = price;
     const singleOrderItem = {
       quantity: item.quantity,
       name,
@@ -50,14 +54,14 @@ const createOrder = async (req, res) => {
 
     orderItems = [...orderItems, singleOrderItem];
 
-    subtotal += item.quantity * price;
+    subTotal += item.quantity * singleOrderItem.price;
   }
-  const total = shippingFee + subtotal;
+  const total = shippingFee + subTotal;
 
   const order = await Order.create({
     orderItems,
     total,
-    subtotal,
+    subTotal,
     shippingFee,
     paymentMethod,
     //card: cardId,
@@ -97,6 +101,7 @@ const UpdateOrderStatus = async (req, res) => {
 
   order.status = status;
   await order.save();
+  res.status(StatusCodes.OK).json({ order });
 };
 
 module.exports = {

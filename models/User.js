@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const CustomError = require("../errors");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
 
@@ -72,9 +73,9 @@ userSchema.statics.login = async function (email, password) {
     if (auth) {
       return user;
     }
-    throw Error("incorrect password");
+    throw new CustomError.BadRequestError("incorrect password");
   }
-  throw Error("incorrect email");
+  throw new CustomError.BadRequestError("incorrect email");
 };
 
 const User = mongoose.model("User", userSchema);

@@ -16,10 +16,11 @@ router
   .route("/")
   .get([requireAuth, authorizePermissions(true)], getAllOrders)
   .post(requireAuth, createOrder);
+router.route("/showMyOrders").get(requireAuth, getCurrentOrders);
+
 router
   .route("/:id")
   .get(requireAuth, getSingleOrder)
   .patch([requireAuth, authorizePermissions(true)], UpdateOrderStatus);
-router.route("/showMyOrders").get(requireAuth, getCurrentOrders);
 
 module.exports = router;
