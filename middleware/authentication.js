@@ -6,16 +6,15 @@ const requireAuth = (req, res, next) => {
 
   const isTokenValid = ({ token }) =>
     jwt.verify(token, process.env.JWT_SECRET || "CO2-eCommerce-Project");
-  
 
   if (!token) {
     throw new CustomError.UnauthenticatedError("Authentication Invalid");
   }
 
   try {
-          const { role } = isTokenValid({ token });
-          req.user = { role };
-          next();
+    const { id, role } = isTokenValid({ token });
+    req.user = { id, role };
+    next();
   } catch (error) {
     throw new CustomError.UnauthenticatedError("Authentication Invalid");
   }

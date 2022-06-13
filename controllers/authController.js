@@ -41,8 +41,17 @@ const logOut = (req, res, next) => {
   res.status(StatusCodes.OK).json({ msg: "logged out" });
 };
 
+const checkPermissions = (requestUser, resourceUserId) => {
+  if (requestUser.role === true) return;
+  if (requestUser.id === resourceUserId.toString()) return;
+  throw new CustomError.UnauthorizedError(
+    "Not authorized to access this route"
+  );
+};
+
 module.exports = {
   login,
   signup,
   logOut,
+  checkPermissions,
 };
