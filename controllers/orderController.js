@@ -10,26 +10,12 @@ const createOrder = async (req, res) => {
   if (!cartItems || cartItems.length < 1) {
     throw new CustomError.BadRequestError("No cart items provided");
   }
-  if (!shippingFee) {
-    throw new CustomError.BadRequestError("Please provide shipping fee");
-  }
-  if (
-    !paymentMethod ||
-    (paymentMethod !== "Card" && paymentMethod !== "Cash")
-  ) {
+
+  if (!paymentMethod || paymentMethod !== "Cash") {
     throw new CustomError.BadRequestError(
       "Please provide valid payment method"
     );
   }
-  if (paymentMethod === "Card" && !cardId) {
-    throw new CustomError.BadRequestError("Please provide card id");
-  }
-  // if(paymentMethod === "Card" && cardId){
-  //   const card = await Card.findOne({_id: cardId});
-  //   if(!card){
-  //     throw new CustomError.NotFoundError(`No card found with the id: ${cardId}`);
-  //   }
-  // }
 
   let orderItems = [];
   let subTotal = 0;
@@ -56,15 +42,13 @@ const createOrder = async (req, res) => {
 
     subTotal += item.quantity * singleOrderItem.price;
   }
-  const total = shippingFee + subTotal;
+  const total = subTotal;
 
   const order = await Order.create({
     orderItems,
     total,
     subTotal,
-    shippingFee,
     paymentMethod,
-    //card: cardId,
     user: req.user.id,
   });
   res.status(StatusCodes.CREATED).json({ order });

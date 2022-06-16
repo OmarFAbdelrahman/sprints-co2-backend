@@ -4,7 +4,7 @@ require("express-async-errors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
-
+const cors = require("cors");
 //DB
 const connectDB = require("./db/connect");
 const fileUpload = require("express-fileupload");
@@ -18,6 +18,21 @@ const authRouter = require("./routes/authRoutes");
 //middleware
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
+
+app.use(cors({ credentials: true, origin: "http://localhost:3006" }));
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Credentials", true);
+//   res.header("Access-Control-Allow-Origin", req.headers.origin);
+//   res.header(
+//     "Access-Control-Allow-Methods",
+//     "GET,PUT,POST,DELETE,UPDATE,OPTIONS"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 app.use(express.json());
 app.use(express.static("./public"));

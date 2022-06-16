@@ -25,10 +25,7 @@ const OrderSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
-    shippingFee: {
-      type: Number,
-      default: 0,
-    },
+
     total: {
       type: Number,
       required: true,
@@ -51,12 +48,10 @@ const OrderSchema = mongoose.Schema(
     paymentMethod: {
       type: String,
       required: [true, "Please provide the payment method"],
-      enum: ["Cash", "Card"],
+      enum: ["Cash"],
+      default: "Cash",
     },
-    // card: {
-    //   type: mongoose.Schema.ObjectId,
-    //   ref: "Card",
-    // },
+
     user: { type: mongoose.Schema.ObjectId, ref: "User", required: true },
   },
   { timestamps: true }

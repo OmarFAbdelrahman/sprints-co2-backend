@@ -60,13 +60,12 @@
         * [Wrong ID](#ii-example-request-wrong-id-2)
 * [Orders](#orders)
     1. [Create Order](#1-create-order)
-        * [Card Order/ No Card ID](#i-example-request-card-order-no-card-id)
+        * [Card Order/ No Card ID (Deactivated)](#i-example-request-card-order-no-card-id-deactivated)
         * [No Payment Method](#ii-example-request-no-payment-method)
         * [Cash Order Example](#iii-example-request-cash-order-example)
-        * [Card Order Example](#iv-example-request-card-order-example)
-        * [No Shipping Fee](#v-example-request-no-shipping-fee)
-        * [No Authentication](#vi-example-request-no-authentication)
-        * [No Cart Items](#vii-example-request-no-cart-items)
+        * [Card Order Example (Deactivated)](#iv-example-request-card-order-example-deactivated)
+        * [No Authentication](#v-example-request-no-authentication)
+        * [No Cart Items](#vi-example-request-no-cart-items)
     1. [Get Orders](#2-get-orders)
         * [Invalid Authentication](#i-example-request-invalid-authentication)
         * [Successful Response](#ii-example-request-successful-response-4)
@@ -101,7 +100,7 @@
 ```bash
 Method: POST
 Type: RAW
-URL: http://localhost:5000/api/v1/auth/signup
+URL: {{URL}}/auth/signup
 ```
 
 
@@ -323,7 +322,7 @@ URL: http://localhost:5000/api/v1/auth/signup
 ```bash
 Method: POST
 Type: RAW
-URL: http://localhost:5000/api/v1/auth/login
+URL: {{URL}}/auth/login
 ```
 
 
@@ -438,7 +437,7 @@ URL: http://localhost:5000/api/v1/auth/login
 ```bash
 Method: GET
 Type: 
-URL: http://localhost:5000/api/v1/auth/logout
+URL: {{URL}}/auth/logout
 ```
 
 
@@ -481,7 +480,7 @@ URL: http://localhost:5000/api/v1/auth/logout
 ```bash
 Method: POST
 Type: RAW
-URL: http://localhost:5000/api/v1/categories
+URL: {{URL}}/categories
 ```
 
 
@@ -600,7 +599,7 @@ URL: http://localhost:5000/api/v1/categories
 ```bash
 Method: GET
 Type: 
-URL: http://localhost:5000/api/v1/categories
+URL: {{URL}}/categories
 ```
 
 
@@ -655,7 +654,7 @@ URL: http://localhost:5000/api/v1/categories
 ```bash
 Method: GET
 Type: 
-URL: http://localhost:5000/api/v1/categories/:id
+URL: {{URL}}/categories/:id
 ```
 
 
@@ -746,7 +745,7 @@ URL: http://localhost:5000/api/v1/categories/:id
 ```bash
 Method: PATCH
 Type: RAW
-URL: http://localhost:5000/api/v1/categories/:id
+URL: {{URL}}/categories/:id
 ```
 
 
@@ -859,7 +858,7 @@ URL: http://localhost:5000/api/v1/categories/:id
 ```bash
 Method: DELETE
 Type: 
-URL: http://localhost:5000/api/v1/categories/:id
+URL: {{URL}}/categories/:id
 ```
 
 
@@ -948,7 +947,7 @@ URL: http://localhost:5000/api/v1/categories/:id
 ```bash
 Method: POST
 Type: FORMDATA
-URL: http://localhost:5000/api/v1/products/uploadImage
+URL: {{URL}}/products/uploadImage
 ```
 
 
@@ -1043,7 +1042,7 @@ URL: http://localhost:5000/api/v1/products/uploadImage
 ```bash
 Method: POST
 Type: RAW
-URL: http://localhost:5000/api/v1/products
+URL: {{URL}}/products
 ```
 
 
@@ -1194,7 +1193,7 @@ URL: http://localhost:5000/api/v1/products
 ```bash
 Method: GET
 Type: 
-URL: http://localhost:5000/api/v1/products
+URL: {{URL}}/products
 ```
 
 
@@ -1265,7 +1264,7 @@ URL: http://localhost:5000/api/v1/products
 ```bash
 Method: GET
 Type: 
-URL: http://localhost:5000/api/v1/products/:id
+URL: {{URL}}/products/:id
 ```
 
 
@@ -1364,7 +1363,7 @@ URL: http://localhost:5000/api/v1/products/:id
 ```bash
 Method: PATCH
 Type: RAW
-URL: http://localhost:5000/api/v1/products/:id
+URL: {{URL}}/products/:id
 ```
 
 
@@ -1485,7 +1484,7 @@ URL: http://localhost:5000/api/v1/products/:id
 ```bash
 Method: DELETE
 Type: 
-URL: http://localhost:5000/api/v1/products/:id
+URL: {{URL}}/products/:id
 ```
 
 
@@ -1574,7 +1573,7 @@ URL: http://localhost:5000/api/v1/products/:id
 ```bash
 Method: POST
 Type: RAW
-URL: http://localhost:5000/api/v1/orders
+URL: {{URL}}/orders
 ```
 
 
@@ -1595,8 +1594,8 @@ URL: http://localhost:5000/api/v1/orders
             "price": 14
         }
     ],
-    "shippingFee" : 30,
-    "paymentMethod": "Card"
+    
+    "paymentMethod": "Cash"
     
 }
 ```
@@ -1606,7 +1605,7 @@ URL: http://localhost:5000/api/v1/orders
 ***More example Requests/Responses:***
 
 
-#### I. Example Request: Card Order/ No Card ID
+#### I. Example Request: Card Order/ No Card ID (Deactivated)
 
 
 
@@ -1634,7 +1633,7 @@ URL: http://localhost:5000/api/v1/orders
 
 
 
-#### I. Example Response: Card Order/ No Card ID
+#### I. Example Response: Card Order/ No Card ID (Deactivated)
 ```js
 {
     "msg": "Please provide card id"
@@ -1764,7 +1763,7 @@ URL: http://localhost:5000/api/v1/orders
 
 
 
-#### IV. Example Request: Card Order Example
+#### IV. Example Request: Card Order Example (Deactivated)
 
 
 
@@ -1793,7 +1792,7 @@ URL: http://localhost:5000/api/v1/orders
 
 
 
-#### IV. Example Response: Card Order Example
+#### IV. Example Response: Card Order Example (Deactivated)
 ```js
 {
     "order": {
@@ -1840,48 +1839,7 @@ URL: http://localhost:5000/api/v1/orders
 
 
 
-#### V. Example Request: No Shipping Fee
-
-
-
-***Body:***
-
-```js        
-{
-    "cartItems": [
-        {
-            "product": "62a5ff8126bb8cf59688e530",
-            "quantity": 12,
-            "price": 14
-        },
-        {
-            "product": "62a645061a948f01f333847e",
-            "quantity": 5,
-            "price": 14
-        }
-    ]
-
-    
-}
-```
-
-
-
-#### V. Example Response: No Shipping Fee
-```js
-{
-    "msg": "Please provide shipping fee"
-}
-```
-
-
-***Status Code:*** 400
-
-<br>
-
-
-
-#### VI. Example Request: No Authentication
+#### V. Example Request: No Authentication
 
 
 
@@ -1908,7 +1866,7 @@ URL: http://localhost:5000/api/v1/orders
 
 
 
-#### VI. Example Response: No Authentication
+#### V. Example Response: No Authentication
 ```js
 {
     "msg": "Authentication Invalid"
@@ -1922,7 +1880,7 @@ URL: http://localhost:5000/api/v1/orders
 
 
 
-#### VII. Example Request: No Cart Items
+#### VI. Example Request: No Cart Items
 
 
 
@@ -1936,7 +1894,7 @@ URL: http://localhost:5000/api/v1/orders
 
 
 
-#### VII. Example Response: No Cart Items
+#### VI. Example Response: No Cart Items
 ```js
 {
     "msg": "No cart items provided"
@@ -1959,7 +1917,7 @@ URL: http://localhost:5000/api/v1/orders
 ```bash
 Method: GET
 Type: 
-URL: http://localhost:5000/api/v1/orders
+URL: {{URL}}/orders
 ```
 
 
@@ -2178,7 +2136,7 @@ URL: http://localhost:5000/api/v1/orders
 ```bash
 Method: GET
 Type: 
-URL: http://localhost:5000/api/v1/orders/:id
+URL: {{URL}}/orders/:id
 ```
 
 
@@ -2354,7 +2312,7 @@ URL: http://localhost:5000/api/v1/orders/:id
 ```bash
 Method: GET
 Type: 
-URL: http://localhost:5000/api/v1/showMyOrders
+URL: {{URL}}/showMyOrders
 ```
 
 
@@ -2551,7 +2509,7 @@ URL: http://localhost:5000/api/v1/showMyOrders
 ```bash
 Method: PATCH
 Type: RAW
-URL: http://localhost:5000/api/v1/orders/:id
+URL: {{URL}}/orders/:id
 ```
 
 
@@ -2701,4 +2659,4 @@ URL: http://localhost:5000/api/v1/orders/:id
 ---
 [Back to top](#e-commerce-api)
 
->Generated at 2022-06-13 19:32:26 by [docgen](https://github.com/thedevsaddam/docgen)
+>Generated at 2022-06-16 17:22:40 by [docgen](https://github.com/thedevsaddam/docgen)

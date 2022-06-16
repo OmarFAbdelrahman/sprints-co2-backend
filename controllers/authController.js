@@ -38,6 +38,10 @@ const login = async (req, res) => {
 const logOut = (req, res, next) => {
   res.cookie("jwt", "", { maxAge: 1 });
   // console.log("logged out");
+  // res.cookie("test", "test", {
+  //   httpOnly: true,
+  //   maxAge: 1000 * 60 * 60 * 24 * 3,
+  // });
   res.status(StatusCodes.OK).json({ msg: "logged out" });
 };
 
